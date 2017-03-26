@@ -100,7 +100,7 @@
 
 字符是各种文字和符号的总称，包括各个国家文字、标点符号、图形符号、数字等等。字符集是多个字符的集合。字符集种类很多，常见的字符集有：ASCII、GBK、Unicode、BIG5等字符编码（英语：C">
 <meta property="og:image" content="http://i2.buimg.com/1949/351e41a4022bd2b6.png">
-<meta property="og:updated_time" content="2017-03-26T14:16:50.814Z">
+<meta property="og:updated_time" content="2017-03-26T14:55:07.252Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字符集与字符编码">
 <meta name="twitter:description" content="一、前言学习之初，对字符编码概念及原理不够理解，本文用于整理记录关于字符编码的知识。
@@ -384,9 +384,9 @@
 </li>
 <li><p>对于n字节的符号（n&gt;1），第一个字节的前n位都设为1，第n+1位设为0，后面字节的前两位一律设为10，剩下的没有提及的二进制位，全部为这个符号的Unicode码<br>具体编码规则如下</p>
 <p><img src="http://i2.buimg.com/1949/351e41a4022bd2b6.png" alt="Markdown"></p>
-<p>举个例子，字符A的Unicode值为01000001，其UTF-8编码仍旧为01000001，汉字“中”的Unicode编码为0x4E2D(01001110 00101101)，在第三行的范围内，需要用三个字节表示，其UTF-8编码值格式为1110xxxx 10xxxxxx 10xxxxxx，其中x为从最右边开始填入的unicode编码二进制，不够的补0，得到11100100 10111000 10101101</p>
 </li>
 </ul>
+<p>举个例子，字符A的Unicode值为01000001，其UTF-8编码仍旧为01000001，汉字“中”的Unicode编码为0x4E2D(01001110 00101101)，在第三行的范围内，需要用三个字节表示，其UTF-8编码值格式为1110xxxx 10xxxxxx 10xxxxxx，其中x为从最右边开始填入的unicode编码二进制，不够的补0，得到11100100 10111000 10101101</p>
 <p>UTF-8有两个主要优点，第一是变长编码，在能表示足够大的字符集的前提下减少了存储空间，第二是采用前缀编码，即任何一个字符的编码都不是另一个字符编码的前缀，这样的好处是在网络传输过程中如果丢失了一个字节，可以判断出这个字节所在字符的编码边界，只会影响这个字符的显示，而不会影响其后面的字符，这不同于GBK这种非前缀编码，GBK每个汉字用两个字节编码，如果丢失一个字节，剩下的一个字节和后面字符的第一个字节可以组成一个新的字符，这样后续的所有字符都错乱了。</p>
 
       
@@ -435,6 +435,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/26/HTML中的meta元素/" rel="prev" title="HTML中的meta元素">
+                HTML中的meta元素 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -506,7 +510,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -517,7 +521,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -528,7 +532,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
