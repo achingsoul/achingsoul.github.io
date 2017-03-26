@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="字符集,字符编码," />
 
 
 
@@ -87,15 +87,27 @@
 
 
 
-<meta name="description" content="A new beginning.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Achingsoul's Blog">
-<meta property="og:url" content="https://achingsoul.github.io/index.html">
+<meta name="description" content="一、前言学习之初，对字符编码概念及原理不够理解，本文用于整理记录关于字符编码的知识。
+二、基础概念要弄清字符编码，首先需要知道什么是字符集。从名字来知道字符集就是所有字符构成的集合。以下摘自维基百科：
+
+字符是各种文字和符号的总称，包括各个国家文字、标点符号、图形符号、数字等等。字符集是多个字符的集合。字符集种类很多，常见的字符集有：ASCII、GBK、Unicode、BIG5等字符编码（英语：C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字符集与字符编码">
+<meta property="og:url" content="https://achingsoul.github.io/2017/03/26/字符集与字符编码/index.html">
 <meta property="og:site_name" content="Achingsoul's Blog">
-<meta property="og:description" content="A new beginning.">
+<meta property="og:description" content="一、前言学习之初，对字符编码概念及原理不够理解，本文用于整理记录关于字符编码的知识。
+二、基础概念要弄清字符编码，首先需要知道什么是字符集。从名字来知道字符集就是所有字符构成的集合。以下摘自维基百科：
+
+字符是各种文字和符号的总称，包括各个国家文字、标点符号、图形符号、数字等等。字符集是多个字符的集合。字符集种类很多，常见的字符集有：ASCII、GBK、Unicode、BIG5等字符编码（英语：C">
+<meta property="og:image" content="http://i2.buimg.com/1949/351e41a4022bd2b6.png">
+<meta property="og:updated_time" content="2017-03-26T14:16:50.814Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Achingsoul's Blog">
-<meta name="twitter:description" content="A new beginning.">
+<meta name="twitter:title" content="字符集与字符编码">
+<meta name="twitter:description" content="一、前言学习之初，对字符编码概念及原理不够理解，本文用于整理记录关于字符编码的知识。
+二、基础概念要弄清字符编码，首先需要知道什么是字符集。从名字来知道字符集就是所有字符构成的集合。以下摘自维基百科：
+
+字符是各种文字和符号的总称，包括各个国家文字、标点符号、图形符号、数字等等。字符集是多个字符的集合。字符集种类很多，常见的字符集有：ASCII、GBK、Unicode、BIG5等字符编码（英语：C">
+<meta name="twitter:image" content="http://i2.buimg.com/1949/351e41a4022bd2b6.png">
 
 
 
@@ -123,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="https://achingsoul.github.io/"/>
+  <link rel="canonical" href="https://achingsoul.github.io/2017/03/26/字符集与字符编码/"/>
 
 
 
 
 
-  <title> Achingsoul's Blog </title>
+  <title> 字符集与字符编码 | Achingsoul's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -154,9 +166,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,9 +259,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -281,10 +291,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/03/26/字符集与字符编码/" itemprop="url">
-                  字符集与字符编码
-                </a>
+                字符集与字符编码
               
             
           </h1>
@@ -357,9 +364,7 @@
       
 
       
-        
-          
-            <h3 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h3><p>学习之初，对字符编码概念及原理不够理解，本文用于整理记录关于字符编码的知识。</p>
+        <h3 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h3><p>学习之初，对字符编码概念及原理不够理解，本文用于整理记录关于字符编码的知识。</p>
 <h3 id="二、基础概念"><a href="#二、基础概念" class="headerlink" title="二、基础概念"></a>二、基础概念</h3><p>要弄清字符编码，首先需要知道什么是字符集。从名字来知道字符集就是所有字符构成的集合。<br>以下摘自维基百科：</p>
 <blockquote>
 <p><strong>字符</strong>是各种文字和符号的总称，包括各个国家文字、标点符号、图形符号、数字等等。<br><strong>字符集</strong>是多个字符的集合。字符集种类很多，常见的字符集有：ASCII、GBK、Unicode、BIG5等<br><strong>字符编码</strong>（英语：Character encoding）也称字集码，是把字符集中的字符编码为指定集合中某一对象（例如：比特模式、自然数序列、8位组或者电脉冲），以便文本在计算机中存储和通过通信网络的传递。</p>
@@ -384,319 +389,68 @@
 </ul>
 <p>UTF-8有两个主要优点，第一是变长编码，在能表示足够大的字符集的前提下减少了存储空间，第二是采用前缀编码，即任何一个字符的编码都不是另一个字符编码的前缀，这样的好处是在网络传输过程中如果丢失了一个字节，可以判断出这个字节所在字符的编码边界，只会影响这个字符的显示，而不会影响其后面的字符，这不同于GBK这种非前缀编码，GBK每个汉字用两个字节编码，如果丢失一个字节，剩下的一个字节和后面字符的第一个字节可以组成一个新的字符，这样后续的所有字符都错乱了。</p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://achingsoul.github.io/2017/03/23/如何使用-GitHub-Pages-预览页面/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Achingsoul">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://a3.topitme.com/b/ae/40/1103351494ff340aebo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Achingsoul's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/23/如何使用-GitHub-Pages-预览页面/" itemprop="url">
-                  如何使用 GitHub Pages 预览页面
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-23T09:30:28+08:00">
-                2017-03-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/教程/" itemprop="url" rel="index">
-                    <span itemprop="name">教程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/字符集/" rel="tag"># 字符集</a>
           
-
+            <a href="/tags/字符编码/" rel="tag"># 字符编码</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
         
-          
-            <p>为了能预览GitHub上的页面，GitHub推出了 GitHub Pages 功能，以下是设置GitHub Pages的步骤： </p>
-<h2 id="1-登入GitHub，点击New-repository"><a href="#1-登入GitHub，点击New-repository" class="headerlink" title="1.登入GitHub，点击New repository"></a>1.登入GitHub，点击New repository</h2><p><img src="http://upload-images.jianshu.io/upload_images/4730821-71a348b1fde9f019.png?imageMogr2/auto-orient/strip" alt=""></p>
-<h2 id="2-点击Create-repository"><a href="#2-点击Create-repository" class="headerlink" title="2.点击Create repository"></a>2.点击Create repository</h2><p><img src="http://upload-images.jianshu.io/upload_images/4730821-5ce8e7d51934b1bb.png?imageMogr2/auto-orient/strip" alt=""></p>
-<h2 id="3-进入「settings」页面："><a href="#3-进入「settings」页面：" class="headerlink" title="3.进入「settings」页面："></a>3.进入「settings」页面：</h2><p><img src="http://upload-images.jianshu.io/upload_images/4730821-fef2cb519964845f.png?imageMogr2/auto-orient/strip" alt=""></p>
-<h2 id="4-开启-GitHub-Pages-功能，得到一个「预览地址」，我的「预览地址」是-https-achingsoul-github-io-demos"><a href="#4-开启-GitHub-Pages-功能，得到一个「预览地址」，我的「预览地址」是-https-achingsoul-github-io-demos" class="headerlink" title="4.开启 GitHub Pages 功能，得到一个「预览地址」，我的「预览地址」是 https://achingsoul.github.io/demos/"></a>4.开启 GitHub Pages 功能，得到一个「预览地址」，我的「预览地址」是 <a href="https://achingsoul.github.io/demos/">https://achingsoul.github.io/demos/</a></h2><p><img src="http://upload-images.jianshu.io/upload_images/4730821-fef2cb519964845f.png?imageMogr2/auto-orient/strip" alt=""></p>
-<h2 id="5-以后你就用这个「预览地址」来预览你的-html，比如你的-html-路径是-demos-test-html，那么预览链接就是："><a href="#5-以后你就用这个「预览地址」来预览你的-html，比如你的-html-路径是-demos-test-html，那么预览链接就是：" class="headerlink" title="5.以后你就用这个「预览地址」来预览你的 html，比如你的 html 路径是 demos/test.html，那么预览链接就是："></a>5.以后你就用这个「预览地址」来预览你的 html，比如你的 html 路径是 demos/test.html，那么预览链接就是：</h2><p><a href="https://achingsoul.github.io/demos/test.html">https://achingsoul.github.io/demos/test.html</a></p>
-<h3 id="步骤如下："><a href="#步骤如下：" class="headerlink" title="步骤如下："></a>步骤如下：</h3><ul>
-<li>新建test.html</li>
-</ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/4730821-4760c096c4f82d90.png?imageMogr2/auto-orient/strip" alt=""></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4730821-916810aeedd24fc5.png?imageMogr2/auto-orient/strip" alt=""></p>
-<ul>
-<li>在浏览器输入<a href="https://achingsoul.github.io/demos/test.html">https://achingsoul.github.io/demos/test.html</a></li>
-</ul>
-<p>这样，你就能自己随时预览 GitHub 里的页面了！</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
       
 
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://achingsoul.github.io/2017/03/11/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Achingsoul">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://a3.topitme.com/b/ae/40/1103351494ff340aebo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Achingsoul's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/03/23/如何使用-GitHub-Pages-预览页面/" rel="next" title="如何使用 GitHub Pages 预览页面">
+                <i class="fa fa-chevron-left"></i> 如何使用 GitHub Pages 预览页面
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2017/03/11/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T13:46:53+08:00">
-                2017-03-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
           
           </div>
@@ -704,6 +458,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -723,8 +481,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://a3.topitme.com/b/ae/40/1103351494ff340aebo.jpg"
@@ -806,6 +573,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、前言"><span class="nav-number">1.</span> <span class="nav-text">一、前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、基础概念"><span class="nav-number">2.</span> <span class="nav-text">二、基础概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、常见的字符编码"><span class="nav-number">3.</span> <span class="nav-text">三、常见的字符编码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-ASCII"><span class="nav-number">3.1.</span> <span class="nav-text">1.ASCII</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-GBK"><span class="nav-number">3.2.</span> <span class="nav-text">2.GBK</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Unicode"><span class="nav-number">3.3.</span> <span class="nav-text">3.Unicode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-UTF-8"><span class="nav-number">3.4.</span> <span class="nav-text">4.UTF-8</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -918,6 +701,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
