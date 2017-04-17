@@ -4,6 +4,122 @@
   
     
     <entry>
+      <title><![CDATA[DOM的增删改查基本操作]]></title>
+      <url>https://achingsoul.github.io/2017/04/16/DOM%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</url>
+      <content type="html"><![CDATA[<h3 id="一、什么是DOM"><a href="#一、什么是DOM" class="headerlink" title="一、什么是DOM"></a>一、什么是DOM</h3><p>摘自MDN：</p>
+<blockquote>
+<p>文档对象模型 (DOM) 是 HTML 和 XML 文档的编程接口。它给文档（结构树）提供了一个结构化的表述并且定义了一种方式—程序可以对结构树进行访问，以改变文档的结构，样式和内容。 DOM 提供了一种表述形式— 将文档作为一个结构化的节点组以及包含属性和方法的对象。从本质上说，它将 web 页面和脚本或编程语言连接起来了。</p>
+</blockquote>
+<h3 id="二、关于节点"><a href="#二、关于节点" class="headerlink" title="二、关于节点"></a>二、关于节点</h3><p>DOM中有许多不同类型的节点。其中最重要的有三种：<em>元素节点（element node）</em>，<em>文本节点（text node）</em>和<em>属性节点（attribute node）</em>。</p>
+<p>例1：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>DOM的增删改查基本操作<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>什么节点<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">title</span>=<span class="string">"摘自MDN"</span>&gt;</span>balabala<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"节点"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>元素节点<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"a"</span>&gt;</span>文本节点<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"b"</span>&gt;</span>属性节点<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="1-元素节点"><a href="#1-元素节点" class="headerlink" title="1. 元素节点"></a>1. 元素节点</h4><p>DOM的原子是<em>元素节点（element node）</em>，标签的名字就是元素的名字。</p>
+<p>在例1中，诸如 body、p、ul 之类的元素就是元素节点。</p>
+<p>而html是唯一没有包含在其他元素里的唯一元素，它是根元素。</p>
+<h4 id="2-文本节点"><a href="#2-文本节点" class="headerlink" title="2. 文本节点"></a>2. 文本节点</h4><p>在例1中，<code>&lt;p&gt;</code>元素包含着的文本“balabala”。它就是一个<em>文本节点（text node）</em>。</p>
+<h4 id="3-属性节点"><a href="#3-属性节点" class="headerlink" title="3. 属性节点"></a>3. 属性节点</h4><p>属性节点用来对元素做出更具体的描述。</p>
+<p>在例1中，<code>&lt;p title=&quot;摘自MDN&quot;&gt;balabala&lt;/p&gt;</code>  p元素中包含了一个 title 属性，这个属性对包含在元素里的东西进行了描述。</p>
+<p>在DOM中，<code>title=&quot;摘自MDN&quot;</code>  是一个<em>属性节点（attribute node）</em>。属性节点总是被包含在元素节点中。并非所有的元素都包含属性，但所有的属性都被元素包含。</p>
+<h3 id="三、DOM基本操作（增删改查）"><a href="#三、DOM基本操作（增删改查）" class="headerlink" title="三、DOM基本操作（增删改查）"></a>三、DOM基本操作（增删改查）</h3><h4 id="1-增加元素"><a href="#1-增加元素" class="headerlink" title="1. 增加元素"></a>1. 增加元素</h4><ul>
+<li><p>document.createElement() </p>
+<p>创建HTML元素</p>
+</li>
+<li><p>document.createTextNode()</p>
+<p>创建文本节点</p>
+</li>
+<li><p>document.createAttribute()</p>
+<p>创建属性节点</p>
+</li>
+</ul>
+<ul>
+<li><p>document.write()</p>
+<p>写入HTML输出流</p>
+</li>
+<li><p>document.getElementById(<em>id</em>).onclick = function(){<em>code</em>}</p>
+<p>将处理事件的程序代码添加到onclick事件</p>
+</li>
+<li><p>document.createDocumentFragment()</p>
+<p>创建一个新的空的文档片段</p>
+</li>
+<li><p>element.insertBefore()</p>
+<p>添加一个节点到一个参照节点之前</p>
+</li>
+<li><p>document.appendChild()</p>
+<p>将指定的节点添加为调用该方法的节点的最后一个子元素</p>
+</li>
+</ul>
+<h4 id="2-修改元素"><a href="#2-修改元素" class="headerlink" title="2. 修改元素"></a>2. 修改元素</h4><ul>
+<li><p>element.innerHTML()</p>
+<p>获取或替换HTML元素内容</p>
+</li>
+<li><p>element.setAttribute(attribute, value)</p>
+<p>修改属性节点</p>
+</li>
+<li><p>document.replaceChild()</p>
+<p>使用一个节点替换另一个节点</p>
+</li>
+<li><p>document.getElementById(<em>id</em>).innerHTML = <em>new HTML</em></p>
+<p>更改 HTML 元素的内容</p>
+</li>
+<li><p>document.getElementById(<em>id</em>).attribute = <em>new value</em></p>
+<p>更改HTML元素属性的值</p>
+</li>
+<li><p>document.getElementById(<em>id</em>).style.property = <em>new style</em> </p>
+<p>更改HTML元素的样式</p>
+</li>
+<li><p>node.nodeValue()</p>
+<p>改变文本节点的值</p>
+</li>
+</ul>
+<h4 id="3-查询元素"><a href="#3-查询元素" class="headerlink" title="3. 查询元素"></a>3. 查询元素</h4><ul>
+<li><p>document.getElementById()</p>
+<p>返回与给定 id 属性值的节点对应的对象</p>
+</li>
+<li><p>document.getElementsByTagName()</p>
+<p>返回一个对象数组，每个对象对应着标签的一个元素</p>
+</li>
+<li><p>document.getElementsByClassName()</p>
+<p>返回指定相同类名的元素的数组</p>
+</li>
+<li><p>document.getAttribute()</p>
+<p>查询属性节点</p>
+</li>
+<li><p>document.querySelector()</p>
+<p>通过CSS选择器来查找元素。返回第一个匹配的元素，如果没有匹配的元素，则返回null</p>
+</li>
+<li><p>document.querySelectorAll()</p>
+<p>通过CSS选择器来查找元素。返回的是所有匹配的元素，而且可以匹配多个选择符</p>
+</li>
+</ul>
+<h4 id="4-删除元素"><a href="#4-删除元素" class="headerlink" title="4. 删除元素"></a>4. 删除元素</h4><ul>
+<li><p>document.removeChild()</p>
+<p>删除子节点</p>
+</li>
+</ul>
+<p>​</p>
+<hr>
+<h4 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h4><ul>
+<li>《JavaScript DOM编程艺术》</li>
+<li><a href="https://www.w3schools.com/js/js_htmldom_methods.asp" target="_blank" rel="external">JS HTML DOM</a></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> JavaScript </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> DOM </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[我的第一个响应式页面]]></title>
       <url>https://achingsoul.github.io/2017/03/27/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%93%8D%E5%BA%94%E5%BC%8F%E9%A1%B5%E9%9D%A2/</url>
       <content type="html"><![CDATA[<h3 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h3><p>摘自维基百科：</p>
