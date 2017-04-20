@@ -1,0 +1,834 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="事件委托," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="什么是事件事件的三个特点：
+
+小A订阅/关注/监听了XXX
+XXX 发生了变化
+小 A 得到了通知
+
+DOM 事件概述：代码监听了用户，用户产生了变化，那么代码就会得到通知 ，然后做出反应。
+监听事件
+DOM level0 事件：button.onclick = function(){}
+
+在html元素中添加on+事件的属性
+1&amp;lt;button onclick=&quot;alert(&apos;hello w">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用原生JS实现事件委托">
+<meta property="og:url" content="https://achingsoul.github.io/2017/04/20/使用原生JS实现事件委托/index.html">
+<meta property="og:site_name" content="Achingsoul's Blog">
+<meta property="og:description" content="什么是事件事件的三个特点：
+
+小A订阅/关注/监听了XXX
+XXX 发生了变化
+小 A 得到了通知
+
+DOM 事件概述：代码监听了用户，用户产生了变化，那么代码就会得到通知 ，然后做出反应。
+监听事件
+DOM level0 事件：button.onclick = function(){}
+
+在html元素中添加on+事件的属性
+1&amp;lt;button onclick=&quot;alert(&apos;hello w">
+<meta property="og:image" content="http://pij.robinqu.me/Browser_Scripting/DOM_Scripting/eventflow.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/04/20/58f8965e1696d.jpg">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/04/20/58f8af86b154a.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/04/20/58f8b1a99aa01.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/04/20/58f8cc3832a6c.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/04/20/58f8cc3835b88.png">
+<meta property="og:updated_time" content="2017-04-20T15:00:13.664Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用原生JS实现事件委托">
+<meta name="twitter:description" content="什么是事件事件的三个特点：
+
+小A订阅/关注/监听了XXX
+XXX 发生了变化
+小 A 得到了通知
+
+DOM 事件概述：代码监听了用户，用户产生了变化，那么代码就会得到通知 ，然后做出反应。
+监听事件
+DOM level0 事件：button.onclick = function(){}
+
+在html元素中添加on+事件的属性
+1&amp;lt;button onclick=&quot;alert(&apos;hello w">
+<meta name="twitter:image" content="http://pij.robinqu.me/Browser_Scripting/DOM_Scripting/eventflow.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://achingsoul.github.io/2017/04/20/使用原生JS实现事件委托/"/>
+
+
+
+
+
+  <title> 使用原生JS实现事件委托 | Achingsoul's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Achingsoul's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://achingsoul.github.io/2017/04/20/使用原生JS实现事件委托/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Achingsoul">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://ooo.0o0.ooo/2017/04/17/58f4e0f4308a9.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Achingsoul's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                使用原生JS实现事件委托
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-20T22:46:58+08:00">
+                2017-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="什么是事件"><a href="#什么是事件" class="headerlink" title="什么是事件"></a>什么是事件</h2><p>事件的三个特点：</p>
+<ol>
+<li>小A订阅/关注/监听了XXX</li>
+<li>XXX 发生了变化</li>
+<li>小 A 得到了通知</li>
+</ol>
+<h2 id="DOM-事件"><a href="#DOM-事件" class="headerlink" title="DOM 事件"></a>DOM 事件</h2><p>概述：代码<strong>监听</strong>了用户，用户产生了<strong>变化</strong>，那么代码就会得到<strong>通知</strong> ，然后做出反应。</p>
+<h3 id="监听事件"><a href="#监听事件" class="headerlink" title="监听事件"></a>监听事件</h3><ol>
+<li><p>DOM level0 事件：<code>button.onclick = function(){}</code></p>
+<ul>
+<li><p>在html元素中添加on+事件的属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;button onclick=<span class="string">"alert('hello world')"</span>&gt; click me &lt;<span class="regexp">/button&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>在 JavaScript 中绑定事件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">button.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  alert(<span class="string">'hello world'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在W3C出现之前的事件都是 level0事件，可以通过以上两种方式进行监听。但是这个方法只能监听一个事件，第二次监听就会覆盖前一个。</p>
+</li>
+<li><p>DOM level2 事件：<code>button.addEventListener(&#39;click&#39;, function(){})</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">button.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  alert(<span class="string">'hello world'</span>);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>level2理论上可以实现多重监听，不会覆盖前面的监听事件。</p>
+</li>
+</ol>
+<h3 id="事件派发-amp-事件捕获与冒泡"><a href="#事件派发-amp-事件捕获与冒泡" class="headerlink" title="事件派发&amp;事件捕获与冒泡"></a>事件派发&amp;事件捕获与冒泡</h3><p>W3C对DOM事件派发过程的图解：</p>
+<p><img src="http://pij.robinqu.me/Browser_Scripting/DOM_Scripting/eventflow.png" alt=""></p>
+<p>事件派发的过程，本身有三个阶段：</p>
+<ol>
+<li><p>捕获阶段(capture phase)：当事件触发时先通知parent，再通知child。</p>
+</li>
+<li><p>目标阶段(target phase)：当到达目标元素之后，执行目标元素该事件相应的处理函数。</p>
+</li>
+<li><p>冒泡阶段(bubble phase)：当事件触发时，先通知child，再通知parent。</p>
+<p>当时， 网景主张捕获方式，微软主张冒泡方式。后来 W3C 采用折中的方式，制定了统一的标准——<strong>先捕获再冒泡</strong>。 </p>
+<p>addEventListener的第三个参数就是为冒泡和捕获准备的.<br>addEventListener有三个参数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.addEventListener(event, <span class="function"><span class="keyword">function</span>, <span class="title">useCapture</span>)</span></div></pre></td></tr></table></figure>
+<p>第一个参数是需要绑定的事件<br>第二个参数是触发事件后要执行的函数<br>第三个参数默认值是false，表示在事件冒泡阶段调用事件处理函数；如果参数为true，则表示在事件捕获阶段调用处理函数。</p>
+<blockquote>
+<p>两种阶段：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; button.addEventListener(<span class="string">'click'</span>, fn, <span class="literal">true</span>) <span class="comment">// 永远别用 ：从上往下通知</span></div><div class="line">&gt; button.addEventListener(<span class="string">'click'</span>, fn) <span class="comment">// 不加第三个参数或者false ：从下往上通知</span></div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>​</p>
+<p><img src="https://ooo.0o0.ooo/2017/04/20/58f8965e1696d.jpg" alt=""></p>
+</li>
+</ol>
+<h3 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h3><h4 id="1-e-target-和-e-currentTarget"><a href="#1-e-target-和-e-currentTarget" class="headerlink" title="1. e.target 和 e.currentTarget"></a>1. e.target 和 e.currentTarget</h4><p>例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>JS Bin<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"parent1"</span> <span class="attr">style</span>=<span class="string">"padding:20px; background:green;"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"child1"</span> <span class="attr">style</span>=<span class="string">"height:100px; background:red;"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    </div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">      parent1.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'e.target'</span>)</div><div class="line">        <span class="built_in">console</span>.log(e.target)</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'e.currentTarget'</span>)</div><div class="line">        <span class="built_in">console</span>.log(e.currentTarget)</div><div class="line">      &#125;)</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<p><img src="https://ooo.0o0.ooo/2017/04/20/58f8af86b154a.png" alt=""></p>
+<p>这段代码为<code>&lt;div id=&quot;parent1&quot;&gt;</code>绑定了一个监听器，当 <code>&lt;div id=&quot;parent1&quot;&gt;</code>上发生点击事件时，分别输出e.target 和 e.currentTarget 的值。</p>
+<p>当我们点击图中红色方块时，控制台输出结果如下：</p>
+<p><img src="https://ooo.0o0.ooo/2017/04/20/58f8b1a99aa01.png" alt=""></p>
+<p>由此可知，e.target 表示点击的元素，e.currentTarget 表示监听的元素。</p>
+<p><strong>事件委托</strong>就是利用冒泡的原理，把事件加到父元素上，触发执行效果。 </p>
+<h4 id="2-事件委托举例"><a href="#2-事件委托举例" class="headerlink" title="2. 事件委托举例"></a>2. 事件委托举例</h4><p>基于以上理论，当针对多个li元素进行监听时，使用传统的事件委托就显得比较麻烦。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>JS Bin<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"a"</span> &gt;</span>选项1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"b"</span> &gt;</span>选项2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"c"</span> &gt;</span>选项3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">  <span class="keyword">var</span> a = <span class="built_in">document</span>.getElementById(<span class="string">"a"</span>);</div><div class="line">  <span class="keyword">var</span> b = <span class="built_in">document</span>.getElementById(<span class="string">"b"</span>);</div><div class="line">  <span class="keyword">var</span> c = <span class="built_in">document</span>.getElementById(<span class="string">"c"</span>);</div><div class="line"></div><div class="line">  a.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"a"</span>);</div><div class="line">  &#125;</div><div class="line">  b.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"b"</span>);</div><div class="line">  &#125;</div><div class="line">  c.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"c"</span>);</div><div class="line">  &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>以上只是监听3个li元素，如果监听100个甚至更多呢？或者当我们动态增加或减少li元素时，这种方法就显得难以满足需求了。</p>
+<p>下面我们利用冒泡原理，将事件绑定在父元素ul上。以此来<strong>减少监听器</strong>。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ul = <span class="built_in">document</span>.querySelector(<span class="string">'ul'</span>)</div><div class="line">ul.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">e</span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> el = e.target</div><div class="line"><span class="keyword">while</span>(el.tagName !== <span class="string">'LI'</span>)&#123;</div><div class="line">  el = el.parentNode</div><div class="line">  <span class="keyword">if</span>(el === ul)&#123;</div><div class="line">        el = <span class="literal">null</span></div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    &#125; <span class="comment">//ul的子元素在找到ul时就不需要再找了 循环终止</span></div><div class="line">&#125;</div><div class="line">  <span class="keyword">if</span>(el)&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'你点击了 ul 里的 li'</span>)</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>这就是简单的JavaScript事件委托。</p>
+<h4 id="3-动态事件委托举例"><a href="#3-动态事件委托举例" class="headerlink" title="3. 动态事件委托举例"></a>3. 动态事件委托举例</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>JS Bin<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">  </div><div class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"addButton"</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">li</span>&#123;</div><div class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">addButton.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> li = <span class="built_in">document</span>.createElement(<span class="string">'li'</span>)</div><div class="line">  li.textContent = <span class="string">'new'</span></div><div class="line">  </div><div class="line">  <span class="built_in">document</span>.querySelector(<span class="string">'ul'</span>).appendChild(li)</div><div class="line">&#125;</div><div class="line">  <span class="built_in">document</span>.querySelector(<span class="string">'ul'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(e.target)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<p><img src="https://ooo.0o0.ooo/2017/04/20/58f8cc3832a6c.png" alt=""></p>
+<p>控制台运行结果如下：</p>
+<p><img src="https://ooo.0o0.ooo/2017/04/20/58f8cc3835b88.png" alt=""></p>
+<p>如果不用事件委托只能监听前4个列表，使用事件委托则可以监听新增的new列表，实现<strong>监听动态内容</strong>。  </p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>本文记录个人学习原生JS实现事件委托的基本方法，通过基本的例子我们可以了解事件委托的原理，然而遇到具体事件还是需要具体分析。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/事件委托/" rel="tag"># 事件委托</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/16/DOM的增删改查基本操作/" rel="next" title="DOM的增删改查基本操作">
+                <i class="fa fa-chevron-left"></i> DOM的增删改查基本操作
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://ooo.0o0.ooo/2017/04/17/58f4e0f4308a9.jpg"
+               alt="Achingsoul" />
+          <p class="site-author-name" itemprop="name">Achingsoul</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/achingsoul" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.instagram.com/achingsoul2" target="_blank" title="Instagram">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Instagram
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是事件"><span class="nav-number">1.</span> <span class="nav-text">什么是事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-事件"><span class="nav-number">2.</span> <span class="nav-text">DOM 事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#监听事件"><span class="nav-number">2.1.</span> <span class="nav-text">监听事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件派发-amp-事件捕获与冒泡"><span class="nav-number">2.2.</span> <span class="nav-text">事件派发&事件捕获与冒泡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件委托"><span class="nav-number">2.3.</span> <span class="nav-text">事件委托</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-e-target-和-e-currentTarget"><span class="nav-number">2.3.1.</span> <span class="nav-text">1. e.target 和 e.currentTarget</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-事件委托举例"><span class="nav-number">2.3.2.</span> <span class="nav-text">2. 事件委托举例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-动态事件委托举例"><span class="nav-number">2.3.3.</span> <span class="nav-text">3. 动态事件委托举例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">2.4.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Achingsoul</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
