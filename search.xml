@@ -4,6 +4,67 @@
   
     
     <entry>
+      <title><![CDATA[HTTP缓存]]></title>
+      <url>https://achingsoul.github.io/2017/06/19/HTTP%E7%BC%93%E5%AD%98/</url>
+      <content type="html"><![CDATA[<h1 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h1><p>Cache-Control是一个通用首部字段，定义了一组关于缓存的控制字段，可以使CSS文件不需要下载就可以出现在页面里（优化网页加载速度）。</p>
+<p>常用的有以下几个：</p>
+<ul>
+<li>no-cache： 指定返回的响应在未经服务器检查其是否被修改之前，不能使用。就是说没有经过服务器确认的缓存是被禁止的，但是经过服务器确认未变更的资源可以避免重复下载。</li>
+<li>no-store： 这个是简单粗暴地直接禁止浏览器和所有的中继缓存()储存任何版本的返回响应。</li>
+<li>public： 响应可以被缓存(默认)。</li>
+<li>private： 响应可以由浏览器缓存(用户)，但是不允许任何中继缓存(CDN)进行缓存。</li>
+<li>max-age: 指示获取到的响应，从发送请求开始以秒计算，可以重新使用的最长时间间隔。</li>
+</ul>
+<p>格式类似于：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">"Cache-Control" ":" cache-directive</div></pre></td></tr></table></figure>
+<p>作为请求首部时，cache-directive 的可选值有：</p>
+<p><img src="http://7tszky.com1.z0.glb.clouddn.com/FkctxGN8VXdie7M8Fbx6U5Bpfi4c" alt="img"></p>
+<p>作为响应首部时，cache-directive 的可选值有：</p>
+<p><img src="http://7tszky.com1.z0.glb.clouddn.com/FixnilG9OWm4w4qUNZGKSkYXZ4gu" alt="img"></p>
+<p>Cache-Control可以自由组合可选值，比如：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">Cache-Control</span>: public, max-age=3600</div></pre></td></tr></table></figure>
+<p>它代表着，<strong>同一URL，一个小时（3600秒）内不再发请求</strong> ，即可以节省请求。</p>
+<p><strong>重点：缓存是以url为依据的</strong> 。改变url，浏览器就会重新发送请求。</p>
+<p>另外，浏览器对于用户发的第一个请求（localhost），默认不缓存。</p>
+<h1 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h1><p> Expires的值对应一个GMT（格林尼治时间），比如：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Mon, 22 Jul 2017 11:12:01 GMT</div></pre></td></tr></table></figure>
+<p>表示通过告诉浏览器资源缓存的过期时间，同一URL下，指定日期之前浏览器不再发送请求。</p>
+<p>与Cache-Control二选一即可，最好不要共用。</p>
+<h1 id="缓存校验字段"><a href="#缓存校验字段" class="headerlink" title="缓存校验字段"></a>缓存校验字段</h1><p>上述的首部字段均能让客户端决定是否向服务器发送请求，比如设置的缓存时间未过期，那么自然直接从本地缓存取数据即可（在chrome下表现为200 from cache），若缓存时间过期了或资源不该直接走缓存，则会发请求到服务器去。<br>我们现在要说的问题是，如果客户端向服务器发了请求，那么是否意味着一定要读取回该资源的整个实体内容呢？</p>
+<h3 id="Last-Modified"><a href="#Last-Modified" class="headerlink" title="Last Modified"></a>Last Modified</h3><p>服务器将资源传递给客户端时，会将资源最后更改的时间以“Last-Modified: GMT”的形式加在实体首部上一起返回给客户端。</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">Last-Modified</span>: Fri, 22 Jul 2016 01:47:00 GMT</div></pre></td></tr></table></figure>
+<p>如果一个响应有一个Last Modified请求头，那么这个文件就是鼓励缓存的，使用一个启发式的过期时间，但是这个过期时间也是有期限的，最多过期时间不能超过10%。</p>
+<p>即Last Modified不会发送请求，并且过期时间需要浏览器自行计算。</p>
+<h3 id="ETag"><a href="#ETag" class="headerlink" title="ETag"></a>ETag</h3><p>为了解决上述Last-Modified可能存在的不准确的问题，Http1.1还推出了 <strong>ETag 实体首部</strong>字段。 服务器会通过某种算法，给资源计算得出一个唯一标志符（比如md5标志），在把资源响应给客户端的时候，会在实体首部加上“ETag: 唯一标识符”一起返回给客户端。例如：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">Etag</span>: "5d8c72a5edda8d6a:3239"</div></pre></td></tr></table></figure>
+<p>可以通过md5检测字符串是否相同：</p>
+<ol>
+<li>下载检测</li>
+<li>储存密码（现在不用了）</li>
+</ol>
+<p><strong>Cache-Control 与 Etag 区别：</strong> </p>
+<blockquote>
+<p>Cache-Contorl 节省请求的时间，缓存之后不再发请求</p>
+<p>ETag 节省下载的时间</p>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> HTTP </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 缓存 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[this是什么]]></title>
       <url>https://achingsoul.github.io/2017/05/18/this%E6%98%AF%E4%BB%80%E4%B9%88/</url>
       <content type="html"><![CDATA[<h2 id="最简洁的定义"><a href="#最简洁的定义" class="headerlink" title="最简洁的定义"></a>最简洁的定义</h2><p>this就是function.prototype.call()的第一个参数</p>
