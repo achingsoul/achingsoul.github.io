@@ -4,6 +4,67 @@
   
     
     <entry>
+      <title><![CDATA[Flexbox 属性整理]]></title>
+      <url>https://achingsoul.github.io/2017/10/02/flexbox%20%E5%B1%9E%E6%80%A7%E6%95%B4%E7%90%86/</url>
+      <content type="html"><![CDATA[<p>以前收藏的两个网站，对于学习 Flexbox 比较轻松易懂，多玩几次就会了，顺便整理一下属性和取值，方便自己复习。</p>
+<p>网站一：<a href="http://flexboxfroggy.com/#zh-cn" target="_blank" rel="external">http://flexboxfroggy.com/#zh-cn</a>        网站二：<a href="http://www.flexboxdefense.com/" target="_blank" rel="external">http://www.flexboxdefense.com/</a></p>
+<h1 id="Flexbox属性整理"><a href="#Flexbox属性整理" class="headerlink" title="Flexbox属性整理"></a>Flexbox属性整理</h1><blockquote>
+<p>注意当flex以列为方向时，<code>justify-content</code> 控制纵向对齐，<code>align-items</code> 控制横向对齐。</p>
+</blockquote>
+<h3 id="justify-content-水平对齐元素"><a href="#justify-content-水平对齐元素" class="headerlink" title="justify-content  水平对齐元素"></a>justify-content  水平对齐元素</h3><ul>
+<li><code>flex-start</code>: 元素和容器的左端对齐。</li>
+<li><code>flex-end</code>: 元素和容器的右端对齐。</li>
+<li><code>center</code>: 元素在容器里居中。</li>
+<li><code>space-between</code>:元素之间保持相等的距离。</li>
+<li><code>space-around</code>:元素周围保持相等的距离。</li>
+</ul>
+<h3 id="align-items-纵向对齐元素"><a href="#align-items-纵向对齐元素" class="headerlink" title="align-items  纵向对齐元素"></a>align-items  纵向对齐元素</h3><h3 id="align-self-控制单个元素属性"><a href="#align-self-控制单个元素属性" class="headerlink" title="align-self  控制单个元素属性"></a>align-self  控制单个元素属性</h3><ul>
+<li><code>flex-start</code>: 元素与容器的顶部对齐。</li>
+<li><code>flex-end</code>: 元素与容器的底部对齐。</li>
+<li><code>center</code>: 元素纵向居中。</li>
+<li><code>baseline</code>: 元素在容器的基线位置显示。</li>
+<li><code>stretch</code>: 元素被拉伸以填满整个容器。</li>
+</ul>
+<h3 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h3><h5 id="当作为一个弹性盒子容器的属性时，浏览器如何在容器的侧轴围绕弹性盒子项目分配空间。"><a href="#当作为一个弹性盒子容器的属性时，浏览器如何在容器的侧轴围绕弹性盒子项目分配空间。" class="headerlink" title="当作为一个弹性盒子容器的属性时，浏览器如何在容器的侧轴围绕弹性盒子项目分配空间。"></a>当作为一个<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout" target="_blank" rel="external">弹性盒子容器</a>的属性时，浏览器如何在容器的侧轴围绕弹性盒子项目分配空间。</h5><ul>
+<li><code>flex-start</code>: 多行都集中在顶部。</li>
+<li><code>flex-end</code>: 多行都集中在底部。</li>
+<li><code>center</code>: 多行居中。</li>
+<li><code>space-between</code>: 行与行之间保持相等距离。</li>
+<li><code>space-around</code>: 每行的周围保持相等距离。</li>
+<li><code>stretch</code>: 每一行都被拉伸以填满容器。</li>
+</ul>
+<h3 id="flex-direction-元素在容器里摆放的方向"><a href="#flex-direction-元素在容器里摆放的方向" class="headerlink" title="flex-direction  元素在容器里摆放的方向"></a>flex-direction  元素在容器里摆放的方向</h3><ul>
+<li><code>row</code>: 元素摆放的方向和文字方向一致。</li>
+<li><code>row-reverse</code>: 元素摆放的方向和文字方向相反。</li>
+<li><code>column</code>: 元素从上放到下。</li>
+<li><code>column-reverse</code>: 元素从下放到上。</li>
+</ul>
+<h3 id="flex-wrap-指定元素单行or多行显示"><a href="#flex-wrap-指定元素单行or多行显示" class="headerlink" title="flex-wrap 指定元素单行or多行显示"></a>flex-wrap 指定元素单行or多行显示</h3><ul>
+<li><code>nowrap</code>: 所有的元素都在一行。</li>
+<li><code>wrap</code>: 元素自动换成多行。</li>
+<li><code>wrap-reverse</code>: 元素自动换成逆序的多行。</li>
+</ul>
+<h3 id="flex-flow-上面两个属性的缩写，接受两个属性的值，以空格隔开"><a href="#flex-flow-上面两个属性的缩写，接受两个属性的值，以空格隔开" class="headerlink" title="flex-flow 上面两个属性的缩写，接受两个属性的值，以空格隔开"></a>flex-flow 上面两个属性的缩写，接受两个属性的值，以空格隔开</h3><ul>
+<li>例：<code>flex-flow: row wrap</code> </li>
+</ul>
+<h3 id="order-调整元素的顺序，默认值为0"><a href="#order-调整元素的顺序，默认值为0" class="headerlink" title="order 调整元素的顺序，默认值为0"></a>order 调整元素的顺序，默认值为0</h3>]]></content>
+      
+        <categories>
+            
+            <category> CSS </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> flex </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[移动端页面元素垂直居中兼容性问题]]></title>
       <url>https://achingsoul.github.io/2017/09/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%A1%B5%E9%9D%A2%E5%85%83%E7%B4%A0%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98/</url>
       <content type="html"><![CDATA[<p>由于在做网易云音乐播放器时，专辑封面模块在PC端及安卓端都可以绝对定位居中，唯独iOS无法居中。故解决问题后，整理以下移动端垂直居中兼容性问题。</p>
@@ -26,14 +87,6 @@
             <tag> 居中 </tag>
             
         </tags>
-        
-    </entry>
-    
-    <entry>
-      <title></title>
-      <url>https://achingsoul.github.io/2017/06/20/Cookie%E3%80%81Session%E5%B0%8F%E7%BB%93/</url>
-      <content type="html"></content>
-      
         
     </entry>
     
