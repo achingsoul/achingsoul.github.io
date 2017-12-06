@@ -4,6 +4,98 @@
   
     
     <entry>
+      <title><![CDATA[JS原型链、__proto__和prototype]]></title>
+      <url>https://achingsoul.github.io/2017/12/05/JS%E5%8E%9F%E5%9E%8B%E9%93%BE%E3%80%81-proto-%E5%92%8Cprototype/</url>
+      <content type="html"></content>
+      
+        <categories>
+            
+            <category> JavaScript </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 原型链 </tag>
+            
+            <tag> proto </tag>
+            
+            <tag> prototype </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[JS中的call、apply、bind方法]]></title>
+      <url>https://achingsoul.github.io/2017/11/06/JS%E4%B8%AD%E7%9A%84call%E3%80%81apply%E3%80%81bind%E6%96%B9%E6%B3%95/</url>
+      <content type="html"><![CDATA[<p>在JavaScript中，call、apply和bind 是Function对象自带的三个方法，这三个方法的主要作用是改变函数中的this指向。</p>
+<p>call、apply、bind方法的共同点：</p>
+<blockquote>
+<p>apply 、 call 、bind 三者都是用来改变函数的this对象的指向的；</p>
+<p>apply 、 call 、bind 三者第一个参数都是this要指向的对象，也就是想指定的上下文（函数的每次调用都会拥有一个特殊值——本次调用的上下文（context）——这就是this关键字的值。）；</p>
+<p>apply 、 call 、bind 三者都可以利用后续参数传参；</p>
+</blockquote>
+<p>call、apply、bind方法的区别：</p>
+<blockquote>
+<p>bind 是返回对应函数，便于稍后调用；apply 、call 则是立即调用 。</p>
+</blockquote>
+<p><strong>一、call</strong>()</p>
+<p>语法：call([thisObj[,arg1[, arg2[, [,.argN]]]]]) 定义：调用一个对象的一个方法，以另一个对象替换当前对象。</p>
+<p>说明： call 方法可以用来代替另一个对象调用一个方法。call 方法可将一个函数的对象上下文从初始的上下文改变为由 thisObj 指定的新对象。</p>
+<p>thisObj的取值有以下4种情况：</p>
+<ol>
+<li>不传，或者传null,undefined， 函数中的this指向window对象</li>
+<li>传递另一个函数的函数名，函数中的this指向这个函数的引用</li>
+<li>传递字符串、数值或布尔类型等基础类型，函数中的this指向其对应的包装对象，如 String、Number、Boolean</li>
+<li>传递一个对象，函数中的this指向这个对象</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);   <span class="comment">//输出函数a中的this对象</span></div><div class="line">&#125;    </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>)</span>&#123;&#125;       </div><div class="line"></div><div class="line"><span class="keyword">var</span> c=&#123;<span class="attr">name</span>:<span class="string">"call"</span>&#125;;    <span class="comment">//定义对象c  </span></div><div class="line">a.call();   <span class="comment">//window</span></div><div class="line">a.call(<span class="literal">null</span>);   <span class="comment">//window</span></div><div class="line">a.call(<span class="literal">undefined</span>);   <span class="comment">//window</span></div><div class="line">a.call(<span class="number">1</span>);   <span class="comment">//Number</span></div><div class="line">a.call(<span class="string">''</span>);   <span class="comment">//String</span></div><div class="line">a.call(<span class="literal">true</span>);   <span class="comment">//Boolean</span></div><div class="line">a.call(b);   <span class="comment">//function b()&#123;&#125;</span></div><div class="line">a.call(c);   <span class="comment">//Object</span></div></pre></td></tr></table></figure>
+<p>如果你不理解上面的，没关系，我们再来看一个例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">class1</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.name=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"我是class1内的方法"</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">class2</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  class1.call(<span class="keyword">this</span>);  <span class="comment">//此行代码执行后，当前的this指向了class1（也可以说class2继承了class1）</span></div><div class="line">&#125;   </div><div class="line"><span class="keyword">var</span> f=<span class="keyword">new</span> class2();</div><div class="line">f.name();   <span class="comment">//调用的是class1内的方法，将class1的name方法交给class2使用</span></div></pre></td></tr></table></figure>
+<p>常用例子：</p>
+<p>（1）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">eat</span>(<span class="params">x,y</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(x+y);</div><div class="line">&#125;   </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">drink</span>(<span class="params">x,y</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(x-y);</div><div class="line">&#125;   </div><div class="line">eat.call(drink,<span class="number">3</span>,<span class="number">2</span>);</div><div class="line"></div><div class="line">输出：<span class="number">5</span></div></pre></td></tr></table></figure>
+<p>这个例子中的意思就是用 eat 来替换 drink，eat.call(drink,3,2) == eat(3,2) ，所以运行结果为：console.log(5);</p>
+<p>注意：js 中的函数其实是对象，函数名是对 Function 对象的引用。</p>
+<p>（2）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.name=<span class="string">"animal"</span>;</div><div class="line">  <span class="keyword">this</span>.showName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.name=<span class="string">"dog"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> animal=<span class="keyword">new</span> Animal();</div><div class="line"><span class="keyword">var</span> dog=<span class="keyword">new</span> Dog();       </div><div class="line">animal.showName.call(dog);</div><div class="line"></div><div class="line">输出：dog</div></pre></td></tr></table></figure>
+<p>在上面的代码中，我们可以看到Dog里并没有showName方法，那为什么（this.name）的值是dog呢？</p>
+<p><strong>关键就在于最后一段代码（animal.showName.call(dog)），意思是把animal的方法放到dog上执行，也可以说，把 animal 的showName()方法放到 dog 上来执行，所以 this.name 应该是 dog。</strong></p>
+<p>（3）继承</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.name=name;</div><div class="line">  <span class="keyword">this</span>.showName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">  Animal.call(<span class="keyword">this</span>,name);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> dog=<span class="keyword">new</span> Dog(<span class="string">"Crazy dog"</span>);</div><div class="line">dog.showName();</div><div class="line"></div><div class="line">输出：Crazy dog</div></pre></td></tr></table></figure>
+<p>Animal.call(this) 的意思就是使用 Animal对象代替this对象，那么Dog就能直接调用Animal的所有属性和方法。</p>
+<p><strong>二、apply()</strong></p>
+<p>语法：apply([thisObj[,argArray]])</p>
+<p>定义：应用某一对象的一个方法，用另一个对象替换当前对象。</p>
+<p>说明：如果 argArray 不是一个有效的数组或者不是 arguments 对象，那么将导致一个 TypeError。如果没有提供 argArray 和 thisObj 任何一个参数，那么 Global 对象将被用作 thisObj， 并且无法被传递任何参数。</p>
+<p><strong>call 和 apply的区别</strong></p>
+<p>对于 apply、call 二者而言，作用完全一样，只是接受参数的方式不太一样。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">class1</span>(<span class="params">args1,args2</span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.name=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(args,args);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">class2</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> args1=<span class="string">"1"</span>;</div><div class="line">  <span class="keyword">var</span> args2=<span class="string">"2"</span>;</div><div class="line">  class1.call(<span class="keyword">this</span>,args1,args2);</div><div class="line">  <span class="comment">/*或*/</span></div><div class="line">  class1.apply(<span class="keyword">this</span>,[args1,args2]);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> c=<span class="keyword">new</span> class2();</div><div class="line">c.name();</div><div class="line"></div><div class="line">输出：<span class="number">1</span> <span class="number">2</span></div></pre></td></tr></table></figure>
+<p>call 需要把参数按顺序传递进去，而 apply 则是把参数放在数组里。</p>
+<p>既然两者功能一样，那该用哪个呢？</p>
+<p>在JavaScript 中，某个函数的参数数量是不固定的，因此要说适用条件的话，当你的参数是明确知道数量时用 call ；而不确定的时候用 apply，然后把参数 push 进数组传递进去。当参数数量不确定时，函数内部也可以通过 arguments 这个数组来遍历所有的参数。</p>
+<p><strong>三、bind</strong>()</p>
+<p>bind是在EcmaScript5中扩展的方法（IE6,7,8不支持）</p>
+<p>bind() 方法与 apply 和 call 很相似，也是可以改变函数体内 this 的指向。</p>
+<p>MDN的解释是：bind()方法会创建一个新函数，称为绑定函数，当调用这个绑定函数时，绑定函数会以创建它时传入 bind()方法的第一个参数作为 this，传入 bind() 方法的第二个以及以后的参数加上绑定函数运行时本身的参数按照顺序作为原函数的参数来调用原函数。</p>
+<p><strong>注意：bind方法的返回值是函数</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> bar=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> foo=&#123;</div><div class="line">  <span class="attr">x</span>:<span class="number">3</span>   </div><div class="line">&#125;</div><div class="line">bar();</div><div class="line">bar.bind(foo)();</div><div class="line"> <span class="comment">/*或*/</span></div><div class="line"><span class="keyword">var</span> func=bar.bind(foo);</div><div class="line">func();</div><div class="line"></div><div class="line">输出：</div><div class="line"><span class="literal">undefined</span></div><div class="line"><span class="number">3</span></div></pre></td></tr></table></figure>
+<p>【转载】原文: </p>
+<p><a href="http://ghmagical.com/article/page/id/UPLfoGI9vJ91" target="_blank" rel="external">http://ghmagical.com/article/page/id/UPLfoGI9vJ91</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> JavaScript </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[排序算法]]></title>
       <url>https://achingsoul.github.io/2017/10/11/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
       <content type="html"><![CDATA[<h1 id="1-冒泡排序"><a href="#1-冒泡排序" class="headerlink" title="1. 冒泡排序"></a>1. 冒泡排序</h1><h2 id="1-1-冒泡排序（Bubble-Sort）的概念"><a href="#1-1-冒泡排序（Bubble-Sort）的概念" class="headerlink" title="1.1 冒泡排序（Bubble Sort）的概念"></a>1.1 冒泡排序（Bubble Sort）的概念</h2><blockquote>

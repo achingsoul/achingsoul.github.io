@@ -257,6 +257,338 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://achingsoul.github.io/2017/12/05/JS原型链、-proto-和prototype/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Achingsoul">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://ooo.0o0.ooo/2017/04/17/58f4e0f4308a9.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Achingsoul's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/12/05/JS原型链、-proto-和prototype/" itemprop="url">
+                  JS原型链、__proto__和prototype
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-05T17:28:23+08:00">
+                2017-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://achingsoul.github.io/2017/11/06/JS中的call、apply、bind方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Achingsoul">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://ooo.0o0.ooo/2017/04/17/58f4e0f4308a9.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Achingsoul's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/11/06/JS中的call、apply、bind方法/" itemprop="url">
+                  JS中的call、apply、bind方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-06T20:40:51+08:00">
+                2017-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在JavaScript中，call、apply和bind 是Function对象自带的三个方法，这三个方法的主要作用是改变函数中的this指向。</p>
+<p>call、apply、bind方法的共同点：</p>
+<blockquote>
+<p>apply 、 call 、bind 三者都是用来改变函数的this对象的指向的；</p>
+<p>apply 、 call 、bind 三者第一个参数都是this要指向的对象，也就是想指定的上下文（函数的每次调用都会拥有一个特殊值——本次调用的上下文（context）——这就是this关键字的值。）；</p>
+<p>apply 、 call 、bind 三者都可以利用后续参数传参；</p>
+</blockquote>
+<p>call、apply、bind方法的区别：</p>
+<blockquote>
+<p>bind 是返回对应函数，便于稍后调用；apply 、call 则是立即调用 。</p>
+</blockquote>
+<p><strong>一、call</strong>()</p>
+<p>语法：call([thisObj[,arg1[, arg2[, [,.argN]]]]]) 定义：调用一个对象的一个方法，以另一个对象替换当前对象。</p>
+<p>说明： call 方法可以用来代替另一个对象调用一个方法。call 方法可将一个函数的对象上下文从初始的上下文改变为由 thisObj 指定的新对象。</p>
+<p>thisObj的取值有以下4种情况：</p>
+<ol>
+<li>不传，或者传null,undefined， 函数中的this指向window对象</li>
+<li>传递另一个函数的函数名，函数中的this指向这个函数的引用</li>
+<li>传递字符串、数值或布尔类型等基础类型，函数中的this指向其对应的包装对象，如 String、Number、Boolean</li>
+<li>传递一个对象，函数中的this指向这个对象</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);   <span class="comment">//输出函数a中的this对象</span></div><div class="line">&#125;    </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>)</span>&#123;&#125;       </div><div class="line"></div><div class="line"><span class="keyword">var</span> c=&#123;<span class="attr">name</span>:<span class="string">"call"</span>&#125;;    <span class="comment">//定义对象c  </span></div><div class="line">a.call();   <span class="comment">//window</span></div><div class="line">a.call(<span class="literal">null</span>);   <span class="comment">//window</span></div><div class="line">a.call(<span class="literal">undefined</span>);   <span class="comment">//window</span></div><div class="line">a.call(<span class="number">1</span>);   <span class="comment">//Number</span></div><div class="line">a.call(<span class="string">''</span>);   <span class="comment">//String</span></div><div class="line">a.call(<span class="literal">true</span>);   <span class="comment">//Boolean</span></div><div class="line">a.call(b);   <span class="comment">//function b()&#123;&#125;</span></div><div class="line">a.call(c);   <span class="comment">//Object</span></div></pre></td></tr></table></figure>
+<p>如果你不理解上面的，没关系，我们再来看一个例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">class1</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.name=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"我是class1内的方法"</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">class2</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  class1.call(<span class="keyword">this</span>);  <span class="comment">//此行代码执行后，当前的this指向了class1（也可以说class2继承了class1）</span></div><div class="line">&#125;   </div><div class="line"><span class="keyword">var</span> f=<span class="keyword">new</span> class2();</div><div class="line">f.name();   <span class="comment">//调用的是class1内的方法，将class1的name方法交给class2使用</span></div></pre></td></tr></table></figure>
+<p>常用例子：</p>
+<p>（1）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">eat</span>(<span class="params">x,y</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(x+y);</div><div class="line">&#125;   </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">drink</span>(<span class="params">x,y</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(x-y);</div><div class="line">&#125;   </div><div class="line">eat.call(drink,<span class="number">3</span>,<span class="number">2</span>);</div><div class="line"></div><div class="line">输出：<span class="number">5</span></div></pre></td></tr></table></figure>
+<p>这个例子中的意思就是用 eat 来替换 drink，eat.call(drink,3,2) == eat(3,2) ，所以运行结果为：console.log(5);</p>
+<p>注意：js 中的函数其实是对象，函数名是对 Function 对象的引用。</p>
+<p>（2）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.name=<span class="string">"animal"</span>;</div><div class="line">  <span class="keyword">this</span>.showName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.name=<span class="string">"dog"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> animal=<span class="keyword">new</span> Animal();</div><div class="line"><span class="keyword">var</span> dog=<span class="keyword">new</span> Dog();       </div><div class="line">animal.showName.call(dog);</div><div class="line"></div><div class="line">输出：dog</div></pre></td></tr></table></figure>
+<p>在上面的代码中，我们可以看到Dog里并没有showName方法，那为什么（this.name）的值是dog呢？</p>
+<p><strong>关键就在于最后一段代码（animal.showName.call(dog)），意思是把animal的方法放到dog上执行，也可以说，把 animal 的showName()方法放到 dog 上来执行，所以 this.name 应该是 dog。</strong></p>
+<p>（3）继承</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.name=name;</div><div class="line">  <span class="keyword">this</span>.showName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">  Animal.call(<span class="keyword">this</span>,name);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> dog=<span class="keyword">new</span> Dog(<span class="string">"Crazy dog"</span>);</div><div class="line">dog.showName();</div><div class="line"></div><div class="line">输出：Crazy dog</div></pre></td></tr></table></figure>
+<p>Animal.call(this) 的意思就是使用 Animal对象代替this对象，那么Dog就能直接调用Animal的所有属性和方法。</p>
+<p><strong>二、apply()</strong></p>
+<p>语法：apply([thisObj[,argArray]])</p>
+<p>定义：应用某一对象的一个方法，用另一个对象替换当前对象。</p>
+<p>说明：如果 argArray 不是一个有效的数组或者不是 arguments 对象，那么将导致一个 TypeError。如果没有提供 argArray 和 thisObj 任何一个参数，那么 Global 对象将被用作 thisObj， 并且无法被传递任何参数。</p>
+<p><strong>call 和 apply的区别</strong></p>
+<p>对于 apply、call 二者而言，作用完全一样，只是接受参数的方式不太一样。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">class1</span>(<span class="params">args1,args2</span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.name=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(args,args);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">class2</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> args1=<span class="string">"1"</span>;</div><div class="line">  <span class="keyword">var</span> args2=<span class="string">"2"</span>;</div><div class="line">  class1.call(<span class="keyword">this</span>,args1,args2);</div><div class="line">  <span class="comment">/*或*/</span></div><div class="line">  class1.apply(<span class="keyword">this</span>,[args1,args2]);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> c=<span class="keyword">new</span> class2();</div><div class="line">c.name();</div><div class="line"></div><div class="line">输出：<span class="number">1</span> <span class="number">2</span></div></pre></td></tr></table></figure>
+<p>call 需要把参数按顺序传递进去，而 apply 则是把参数放在数组里。</p>
+<p>既然两者功能一样，那该用哪个呢？</p>
+<p>在JavaScript 中，某个函数的参数数量是不固定的，因此要说适用条件的话，当你的参数是明确知道数量时用 call ；而不确定的时候用 apply，然后把参数 push 进数组传递进去。当参数数量不确定时，函数内部也可以通过 arguments 这个数组来遍历所有的参数。</p>
+<p><strong>三、bind</strong>()</p>
+<p>bind是在EcmaScript5中扩展的方法（IE6,7,8不支持）</p>
+<p>bind() 方法与 apply 和 call 很相似，也是可以改变函数体内 this 的指向。</p>
+<p>MDN的解释是：bind()方法会创建一个新函数，称为绑定函数，当调用这个绑定函数时，绑定函数会以创建它时传入 bind()方法的第一个参数作为 this，传入 bind() 方法的第二个以及以后的参数加上绑定函数运行时本身的参数按照顺序作为原函数的参数来调用原函数。</p>
+<p><strong>注意：bind方法的返回值是函数</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> bar=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> foo=&#123;</div><div class="line">  <span class="attr">x</span>:<span class="number">3</span>   </div><div class="line">&#125;</div><div class="line">bar();</div><div class="line">bar.bind(foo)();</div><div class="line"> <span class="comment">/*或*/</span></div><div class="line"><span class="keyword">var</span> func=bar.bind(foo);</div><div class="line">func();</div><div class="line"></div><div class="line">输出：</div><div class="line"><span class="literal">undefined</span></div><div class="line"><span class="number">3</span></div></pre></td></tr></table></figure>
+<p>【转载】原文: </p>
+<p><a href="http://ghmagical.com/article/page/id/UPLfoGI9vJ91" target="_blank" rel="external">http://ghmagical.com/article/page/id/UPLfoGI9vJ91</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://achingsoul.github.io/2017/10/11/排序算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1978,380 +2310,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://achingsoul.github.io/2017/03/27/我的第一个响应式页面/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Achingsoul">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://ooo.0o0.ooo/2017/04/17/58f4e0f4308a9.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Achingsoul's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/27/我的第一个响应式页面/" itemprop="url">
-                  我的第一个响应式页面
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-27T00:34:46+08:00">
-                2017-03-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h3><p>摘自维基百科：</p>
-<blockquote>
-<p><strong>响应式网页设计</strong>（英语：Responsive web design，通常缩写为<strong>RWD</strong>），或称自适应网页设计、回应式网页设计、对应式网页设计。 是一种网页设计的技术做法，该设计可使网站在不同的设备（从桌面电脑显示器到移动电话或其他移动产品设备）上浏览时对应不同分辨率皆有适合的呈现，减少用户进行缩放、平移和滚动等操作行为。对于网站设计师和前端工程师来说，有别于过去需要针对各种设备进行不同的设计，使用此种设计方式将更易于维护网页。此概念于2010年5月由国外著名网页设计师Ethan Marcotte所提出。</p>
-</blockquote>
-<h3 id="二、响应式页面的诞生"><a href="#二、响应式页面的诞生" class="headerlink" title="二、响应式页面的诞生"></a>二、响应式页面的诞生</h3><ol>
-<li>设计师给出 PC 设计稿和手机设计稿</li>
-<li>前端开发者根据两套设计稿写代码</li>
-</ol>
-<h3 id="三、编写响应式页面"><a href="#三、编写响应式页面" class="headerlink" title="三、编写响应式页面"></a>三、编写响应式页面</h3><h4 id="1-正交原则"><a href="#1-正交原则" class="headerlink" title="1.正交原则"></a>1.正交原则</h4><p>写 HTML 的时候不考虑 CSS，写 CSS 的时候尽量不要改 HTML，避免逻辑混乱、代码混乱。</p>
-<h4 id="2-分模块"><a href="#2-分模块" class="headerlink" title="2.分模块"></a>2.分模块</h4><p>例如CSS中：</p>
-<ol>
-<li>分模块</li>
-<li>把选择器列出</li>
-<li>选样式</li>
-</ol>
-<h4 id="3-尽量不要写「死」宽高"><a href="#3-尽量不要写「死」宽高" class="headerlink" title="3.尽量不要写「死」宽高"></a>3.尽量不要写「死」宽高</h4><p>HTML标签默认自适应，块级元素宽度的默认值就是100%，高度有文档流内的子元素的高度决定。（写死就没有响应式）</p>
-<ul>
-<li>高度：块级元素可以用<code>padding</code>、<code>line-height</code>来达到预想效果。</li>
-</ul>
-<ul>
-<li>宽度：内联元素使用<code>mix-width</code>，块级元素使用<code>max-width</code>设置。</li>
-</ul>
-<h4 id="4-优先编写移动端页面"><a href="#4-优先编写移动端页面" class="headerlink" title="4.优先编写移动端页面"></a>4.优先编写移动端页面</h4><p>在我的理解，当下大部分数据流量都来源于移动端，所以优先实现移动端页面，然后再编写其他媒体设备页面。</p>
-<h4 id="5-使用CSS媒体查询（Media-Queries）"><a href="#5-使用CSS媒体查询（Media-Queries）" class="headerlink" title="5.使用CSS媒体查询（Media Queries）"></a>5.使用CSS媒体查询<a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Media_queries" target="_blank" rel="external">（Media Queries）</a></h4><p>通过使用<code>@media (判断条件){}</code>来使得在检测不同设备分辨率时，对同一个元素渲染不同的CSS。所以，所有设备的CSS其实可以在同一个文件里，但会根据不同设备来让不同CSS展现出来。</p>
-<h4 id="6-使用开发者工具"><a href="#6-使用开发者工具" class="headerlink" title="6.使用开发者工具"></a>6.使用开发者工具</h4><p>利用开发者工具，观察编写CSS时相应的元素状态，再根据需求更改。</p>
-<h3 id="四、一个简单的响应式页面"><a href="#四、一个简单的响应式页面" class="headerlink" title="四、一个简单的响应式页面"></a>四、一个简单的响应式页面</h3><p>这是我的第一个简单的响应式页面，兼容<code>PC/PC HD/Mobile/Pad</code>模式。</p>
-<p>这个页面还需要完善，关于编写响应式的技巧后续也还会补充。</p>
-<p>代码地址：<a href="https://github.com/achingsoul/simple-page/tree/master/Desktop/simple-page" target="_blank" rel="external">https://github.com/achingsoul/simple-page/tree/master/Desktop/simple-page</a></p>
-<p>预览地址：<a href="https://achingsoul.github.io/simple-page/Desktop/simple-page/index.html">https://achingsoul.github.io/simple-page/Desktop/simple-page/index.html</a></p>
-<h3 id="五、小结"><a href="#五、小结" class="headerlink" title="五、小结"></a>五、小结</h3><ol>
-<li>要先理解整体页面各模块需求，才能更好的进行编写。</li>
-<li>下一步要对响应式页面中遇到的居中问题进行梳理。</li>
-<li>关于flexbox布局要多加练习。</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://achingsoul.github.io/2017/03/26/HTML中的meta元素/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Achingsoul">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://ooo.0o0.ooo/2017/04/17/58f4e0f4308a9.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Achingsoul's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/26/HTML中的meta元素/" itemprop="url">
-                  HTML中的meta元素
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-26T23:25:07+08:00">
-                2017-03-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML5/" itemprop="url" rel="index">
-                    <span itemprop="name">HTML5</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h3><p>HTML中的meta元素表示那些不能由其它HTML元相关元素，如title，base，link，style和scipt元素之一表示的任何元数据信息。详情参考<a href="https://www.w3.org/TR/html5/document-metadata.html#the-meta-element" target="_blank" rel="external">4.2 Document metadata – HTML5</a>。</p>
-<h3 id="二、属性"><a href="#二、属性" class="headerlink" title="二、属性"></a>二、属性</h3><h4 id="1-name属性"><a href="#1-name属性" class="headerlink" title="1.name属性"></a>1.name属性</h4><p>name属性主要用于描述网页，与之对应的属性值为content，content中的内容主要是便于搜索引擎机器人查找信息和分类信息用的。</p>
-<p>meta标签的name属性语法格式是：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"参数"</span> <span class="attr">content</span>=<span class="string">"具体的参数值"</span>&gt;</span></div></pre></td></tr></table></figure>
-<ul>
-<li><p><strong>页面关键字</strong></p>
-<p>每个网页应具有描述该网页内容的一组唯一的关键字。<br>使用人们可能会搜索，并准确描述网页上所提供信息的描述性和代表性关键字及短语。标记内容太短，则搜索引擎可能不会认为这些内容相关。另外标记不应超过 874 个字符。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"keywords"</span> <span class="attr">content</span>=<span class="string">"壁纸 音乐 电影 吉他"</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p><strong>页面描述</strong></p>
-<p>页面描述，每个网页都应有一个不超过 150 个字符且能准确反映网页内容的描述标签。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"description"</span> <span class="attr">content</span>=<span class="string">"网站描述"</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p><strong>搜索引擎索引方式</strong></p>
-<p>有时候会有一些站点内容，不希望被ROBOTS抓取而公开。为了解决这个问题，ROBOTS开发界提供了两个办法：一个是robots.txt，另一个是The Robots META标签。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"Robots"</span> <span class="attr">contect</span>=<span class="string">"all|none|index|noindex|follow|nofollow"</span>&gt;</span>  </div><div class="line"><span class="comment">&lt;!--</span></div><div class="line">默认是all其中的属性说明如下： </div><div class="line">设定为all：文件将被检索，且页面上的链接可以被查询； </div><div class="line">设定为none：文件将不被检索，且页面上的链接不可以被查询； </div><div class="line">设定为index：文件将被检索； </div><div class="line">设定为follow：页面上的链接可以被查询； </div><div class="line">设定为noindex：文件将不被检索，但页面上的链接可以被查询； </div><div class="line">设定为nofollow：文件将不被检索，页面上的链接可以被查询。</div><div class="line">--&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p><strong>声明作者</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"author"</span> <span class="attr">content</span>=<span class="string">"author name"</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p><strong>浏览器内核选择</strong></p>
-<p>国内浏览器很多都是双内核（webkit和Trident），webkit内核高速浏览，IE内核兼容网页和旧版网站。而添加meta标签的网站可以控制浏览器选择何种内核渲染。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"renderer"</span> <span class="attr">content</span>=<span class="string">"webkit|ie-comp|ie-stand"</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="2-http-equiv属性"><a href="#2-http-equiv属性" class="headerlink" title="2.http-equiv属性"></a>2.http-equiv属性</h3><p>http-equiv顾名思义，相当于http的文件头作用，它可以向浏览器传回一些有用的信息，以帮助正确和精确地显示网页内容，与之对应的属性值为content，content中的内容其实就是各个参数的变量值。</p>
-<p>meta标签的http-equiv属性语法格式是：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"参数"</span> <span class="attr">content</span>=<span class="string">"参数变量值"</span>&gt;</span></div></pre></td></tr></table></figure>
-<ul>
-<li><p><strong>优先使用 IE 最新版本和 Chrome</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge,chrome=1"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 关于X-UA-Compatible --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=6"</span> &gt;</span><span class="comment">&lt;!-- 使用IE6 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=7"</span> &gt;</span><span class="comment">&lt;!-- 使用IE7 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=8"</span> &gt;</span><span class="comment">&lt;!-- 使用IE8 --&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p><strong>页面重定向和刷新</strong></p>
-<p>content内的数字代表时间（秒），既多少时间后刷新。如果加url,则会重定向到指定网页（搜索引擎能够自动检测，也很容易被引擎视作误导而受到惩罚）。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"refresh"</span> <span class="attr">content</span>=<span class="string">"0;url="</span> "&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p><strong>设定期限</strong></p>
-<p>可以用于设定网页的到期时间。一旦网页过期，必须到服务器上重新传输。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"expires"</span> <span class="attr">content</span>=<span class="string">"Fri,12Jan200118:18:18GMT"</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p><strong>Pragma(cache模式)</strong></p>
-<p>禁止浏览器从本地计算机的缓存中访问页面内容。这样设定，访问者将无法脱机浏览。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Pragma"</span> <span class="attr">content</span>=<span class="string">"no-cache"</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p><strong>自动刷新并指向新页面</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Refresh"</span> <span class="attr">content</span>=<span class="string">"2;URL=http://www.xxx.net"</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>2是指停留2秒钟后自动刷新到URL网址。</p>
-</li>
-<li><p><strong>Set-Cookie(cookie设定)</strong></p>
-<p>如果网页过期，那么存盘的cookie将被删除。<br>用法（必须使用GMT时间格式）</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Set-Cookie"</span> <span class="attr">content</span>=<span class="string">"cookievalue=xxx;expires=Friday,12-Jan-200118:18:18GMT; path=/"</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p><strong>设定显示的语言</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Language"</span> <span class="attr">content</span>=<span class="string">"zh-cn"</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="3-特殊"><a href="#3-特殊" class="headerlink" title="3.特殊"></a>3.特殊</h3><ul>
-<li><p><strong>声明编码H5最新写法</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">'utf-8'</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2401,7 +2359,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2423,7 +2381,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
