@@ -257,179 +257,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://achingsoul.github.io/2017/03/27/我的第一个响应式页面/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Achingsoul">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://ooo.0o0.ooo/2017/04/17/58f4e0f4308a9.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Achingsoul's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/27/我的第一个响应式页面/" itemprop="url">
-                  我的第一个响应式页面
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-27T00:34:46+08:00">
-                2017-03-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h3><p>摘自维基百科：</p>
-<blockquote>
-<p><strong>响应式网页设计</strong>（英语：Responsive web design，通常缩写为<strong>RWD</strong>），或称自适应网页设计、回应式网页设计、对应式网页设计。 是一种网页设计的技术做法，该设计可使网站在不同的设备（从桌面电脑显示器到移动电话或其他移动产品设备）上浏览时对应不同分辨率皆有适合的呈现，减少用户进行缩放、平移和滚动等操作行为。对于网站设计师和前端工程师来说，有别于过去需要针对各种设备进行不同的设计，使用此种设计方式将更易于维护网页。此概念于2010年5月由国外著名网页设计师Ethan Marcotte所提出。</p>
-</blockquote>
-<h3 id="二、响应式页面的诞生"><a href="#二、响应式页面的诞生" class="headerlink" title="二、响应式页面的诞生"></a>二、响应式页面的诞生</h3><ol>
-<li>设计师给出 PC 设计稿和手机设计稿</li>
-<li>前端开发者根据两套设计稿写代码</li>
-</ol>
-<h3 id="三、编写响应式页面"><a href="#三、编写响应式页面" class="headerlink" title="三、编写响应式页面"></a>三、编写响应式页面</h3><h4 id="1-正交原则"><a href="#1-正交原则" class="headerlink" title="1.正交原则"></a>1.正交原则</h4><p>写 HTML 的时候不考虑 CSS，写 CSS 的时候尽量不要改 HTML，避免逻辑混乱、代码混乱。</p>
-<h4 id="2-分模块"><a href="#2-分模块" class="headerlink" title="2.分模块"></a>2.分模块</h4><p>例如CSS中：</p>
-<ol>
-<li>分模块</li>
-<li>把选择器列出</li>
-<li>选样式</li>
-</ol>
-<h4 id="3-尽量不要写「死」宽高"><a href="#3-尽量不要写「死」宽高" class="headerlink" title="3.尽量不要写「死」宽高"></a>3.尽量不要写「死」宽高</h4><p>HTML标签默认自适应，块级元素宽度的默认值就是100%，高度有文档流内的子元素的高度决定。（写死就没有响应式）</p>
-<ul>
-<li>高度：块级元素可以用<code>padding</code>、<code>line-height</code>来达到预想效果。</li>
-</ul>
-<ul>
-<li>宽度：内联元素使用<code>mix-width</code>，块级元素使用<code>max-width</code>设置。</li>
-</ul>
-<h4 id="4-优先编写移动端页面"><a href="#4-优先编写移动端页面" class="headerlink" title="4.优先编写移动端页面"></a>4.优先编写移动端页面</h4><p>在我的理解，当下大部分数据流量都来源于移动端，所以优先实现移动端页面，然后再编写其他媒体设备页面。</p>
-<h4 id="5-使用CSS媒体查询（Media-Queries）"><a href="#5-使用CSS媒体查询（Media-Queries）" class="headerlink" title="5.使用CSS媒体查询（Media Queries）"></a>5.使用CSS媒体查询<a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Media_queries" target="_blank" rel="external">（Media Queries）</a></h4><p>通过使用<code>@media (判断条件){}</code>来使得在检测不同设备分辨率时，对同一个元素渲染不同的CSS。所以，所有设备的CSS其实可以在同一个文件里，但会根据不同设备来让不同CSS展现出来。</p>
-<h4 id="6-使用开发者工具"><a href="#6-使用开发者工具" class="headerlink" title="6.使用开发者工具"></a>6.使用开发者工具</h4><p>利用开发者工具，观察编写CSS时相应的元素状态，再根据需求更改。</p>
-<h3 id="四、一个简单的响应式页面"><a href="#四、一个简单的响应式页面" class="headerlink" title="四、一个简单的响应式页面"></a>四、一个简单的响应式页面</h3><p>这是我的第一个简单的响应式页面，兼容<code>PC/PC HD/Mobile/Pad</code>模式。</p>
-<p>这个页面还需要完善，关于编写响应式的技巧后续也还会补充。</p>
-<p>代码地址：<a href="https://github.com/achingsoul/simple-page/tree/master/Desktop/simple-page" target="_blank" rel="external">https://github.com/achingsoul/simple-page/tree/master/Desktop/simple-page</a></p>
-<p>预览地址：<a href="https://achingsoul.github.io/simple-page/Desktop/simple-page/index.html">https://achingsoul.github.io/simple-page/Desktop/simple-page/index.html</a></p>
-<h3 id="五、小结"><a href="#五、小结" class="headerlink" title="五、小结"></a>五、小结</h3><ol>
-<li>要先理解整体页面各模块需求，才能更好的进行编写。</li>
-<li>下一步要对响应式页面中遇到的居中问题进行梳理。</li>
-<li>关于flexbox布局要多加练习。</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://achingsoul.github.io/2017/03/26/HTML中的meta元素/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -988,7 +815,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1010,7 +837,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1072,7 +899,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
